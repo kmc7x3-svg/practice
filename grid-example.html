@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid 예제</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .example {
+            margin-bottom: 40px;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .grid-item {
+            background: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #fff;
+        }
+
+        /* 예제 1: 기본 3열 그리드 */
+        .grid-1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        /* 예제 2: 비율 조정 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 10px;
+        }
+
+        /* 예제 3: 행과 열 지정 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+        }
+
+        /* 예제 4: 셀 병합 */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+        }
+
+        .grid-4 .item-1 {
+            grid-column: 1 / 3;
+        }
+
+        .grid-4 .item-2 {
+            grid-row: 1 / 3;
+        }
+
+        .grid-4 .item-5 {
+            grid-column: 2 / 4;
+        }
+
+        /* 예제 5: 갭 조정 */
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* 예제 6: 반응형 그리드 */
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        /* 예제 7: 영역 기반 레이아웃 */
+        .grid-7 {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "sidebar main main"
+                "footer footer footer";
+            grid-template-columns: 200px 1fr 1fr;
+            grid-template-rows: 80px 200px 60px;
+            gap: 10px;
+        }
+
+        .grid-7 .header {
+            grid-area: header;
+        }
+
+        .grid-7 .sidebar {
+            grid-area: sidebar;
+        }
+
+        .grid-7 .main {
+            grid-area: main;
+        }
+
+        .grid-7 .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Grid 예제</h1>
+
+    <!-- 예제 1 -->
+    <div class="example">
+        <h2>예제 1: 기본 3열 그리드</h2>
+        <p><code>grid-template-columns: repeat(3, 1fr);</code></p>
+        <div class="grid-1">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+    </div>
+
+    <!-- 예제 2 -->
+    <div class="example">
+        <h2>예제 2: 비율 조정</h2>
+        <p><code>grid-template-columns: 1fr 2fr 1fr;</code></p>
+        <div class="grid-2">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2 (넓음)</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5 (넓음)</div>
+            <div class="grid-item">6</div>
+        </div>
+    </div>
+
+    <!-- 예제 3 -->
+    <div class="example">
+        <h2>예제 3: 행과 열 지정</h2>
+        <p><code>grid-template-rows: repeat(3, 100px);</code></p>
+        <div class="grid-3">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">8</div>
+            <div class="grid-item">9</div>
+            <div class="grid-item">10</div>
+            <div class="grid-item">11</div>
+            <div class="grid-item">12</div>
+        </div>
+    </div>
+
+    <!-- 예제 4 -->
+    <div class="example">
+        <h2>예제 4: 셀 병합</h2>
+        <p><code>grid-column: 1 / 3; grid-row: 1 / 3;</code></p>
+        <div class="grid-4">
+            <div class="grid-item item-1">1 (가로병합)</div>
+            <div class="grid-item item-2">2 (세로병합)</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item item-5">5 (가로병합)</div>
+        </div>
+    </div>
+
+    <!-- 예제 5 -->
+    <div class="example">
+        <h2>예제 5: 갭 조정</h2>
+        <p><code>gap: 30px;</code></p>
+        <div class="grid-5">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+    </div>
+
+    <!-- 예제 6 -->
+    <div class="example">
+        <h2>예제 6: 반응형 그리드</h2>
+        <p><code>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</code></p>
+        <div class="grid-6">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+    </div>
+
+    <!-- 예제 7 -->
+    <div class="example">
+        <h2>예제 7: 영역 기반 레이아웃</h2>
+        <p><code>grid-template-areas: "header header header" ...</code></p>
+        <div class="grid-7">
+            <div class="grid-item header">Header</div>
+            <div class="grid-item sidebar">Sidebar</div>
+            <div class="grid-item main">Main</div>
+            <div class="grid-item footer">Footer</div>
+        </div>
+    </div>
+</body>
+
+</html>
